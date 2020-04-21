@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Drag and Drop</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    
+  </head>
+  <body>
+
+
+    <div class="text-center display-3">
+      <p class="h3 bg-info p-3 text-white">Drag the data</p>
+    </div>
+    <div class="container">
+      <div class="row pt-5">
+        <div class="col-6">
+          <ul id="list" style="min-height: 245px;width: 100%; border: 1px solid #ddd;border-radius: 5px;" class="list-group py-5 px-2" ondrop="ondropHandler(event)" ondragover="ondragoverHandler(event)">
+            <li id="item1" class="list-group-item" draggable="true" ondragstart="ondragstartHandler(event)">Apple</li>
+            <li id="item2" class="list-group-item" draggable="true" ondragstart="ondragstartHandler(event)">Banana</li>
+            <li id="item3" class="list-group-item" draggable="true" ondragstart="ondragstartHandler(event)">Mangoe</li>
+            <li id="item4" class="list-group-item" draggable="true" ondragstart="ondragstartHandler(event)">Litchi</li>
+            <li id="item5" class="list-group-item" draggable="true" ondragstart="ondragstartHandler(event)">Pinaple</li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <ul style="min-height: 245px;width: 100%; border: 1px solid #ddd;border-radius: 5px;" class="list-group py-5 px-2" ondrop="ondropHandler(event)" ondragover="ondragoverHandler(event)"></ul>
+        </div>
+      </div>
+    </div>
+      
+    <!-- Optional JavaScript -->
+    <script>
+      const ondragstartHandler = e => {
+        e.dataTransfer.setData('text',e.target.id)
+      }
+      const ondragoverHandler = e => {
+        e.preventDefault()
+      }
+      const ondropHandler = e => {
+        e.preventDefault()
+        let data = e.dataTransfer.getData('text')
+        e.target.appendChild(document.getElementById(data))
+      }
+    </script>
+  </body>
+</html>
